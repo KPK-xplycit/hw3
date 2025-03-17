@@ -277,15 +277,15 @@ int main(){
     }
     // Win decision for rounds choice:
     if(myDeck.count() + myPile.count() < pcDeck.count() + pcPile.count()) {
-        std::cout << "After " << numberOfRounds << " rounds, you have lost:\n\t";
+        std::cout << "After " << numberOfRounds << " round(s), you have lost:\n\t";
         std::cout << "Your total cards: " << myDeck.count() + myPile.count() << "\n\t";
         std::cout << "Computer\'s total cards: " << pcDeck.count() + pcPile.count();
     } else if (myDeck.count() + myPile.count() > pcDeck.count() + pcPile.count()) {
-        std::cout << "After " << numberOfRounds << " rounds, you have won:\n\t";
+        std::cout << "After " << numberOfRounds << " round(s), you have won:\n\t";
         std::cout << "Your total cards: " << myDeck.count() + myPile.count() << "\n\t";
         std::cout << "Computer\'s total cards: " << pcDeck.count() + pcPile.count();
     } else {
-        std::cout << "After " << numberOfRounds << " rounds, you have tied:\n\t";
+        std::cout << "After " << numberOfRounds << " round(s), you have tied:\n\t";
         std::cout << "Your total cards: " << myDeck.count() + myPile.count() << "\n\t";
         std::cout << "Computer\'s total cards: " << pcDeck.count() + pcPile.count();
     }
