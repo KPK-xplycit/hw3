@@ -101,16 +101,18 @@ class deck{
 
 int main(){
     std::srand(std::time(nullptr));
-    bool style;
-    std::cout << "What style of play would you prefer:\n\t0: rounds\n\t1: all out\n";
-    std::cin >> style;
     int numberOfRounds = -1;
-    if(!style){
-        std::cout << "How many rounds do you want to play?\n";
-        std::cin >> numberOfRounds;
-        while(numberOfRounds <= 0){
-            std::cout << "Number of rounds must be a positive, non-zero number\n";    
+    {   // style is not used again so this will make that memory available again after leaving this scope.
+        int style;
+        std::cout << "What style of play would you prefer:\n\t0: rounds\n\t1: all out\n";
+        std::cin >> style;
+        if(!style){
+            std::cout << "How many rounds do you want to play?\n";
             std::cin >> numberOfRounds;
+            while(numberOfRounds <= 0){
+                std::cout << "Number of rounds must be a positive, non-zero number\n";    
+                std::cin >> numberOfRounds;
+            }
         }
     }
     // initilialize & declare all variables to be used
@@ -118,25 +120,27 @@ int main(){
     pile myPile;
     deck pcDeck;
     pile pcPile;
-    int deckBuilder[54]= {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14};
-    int i = 54;
-    int k = std::rand() % 54;
-    while(i!=0){
-        while(deckBuilder[k] == 0){
-            k = std::rand() % 54;
-        }
-        while(deckBuilder[k]!=0){
-            myDeck.push(deckBuilder[k]);
-            i--;
-            deckBuilder[k] = 0;
-        }
-        while(deckBuilder[k] == 0){
-            k = std::rand() % 54;
-        }
-        while(deckBuilder[k]!=0){
-            pcDeck.push(deckBuilder[k]);
-            i--;
-            deckBuilder[k] = 0;
+    {   // none of these variables in here are used again outside of this scope, this is to make memory available again.
+        int deckBuilder[54]= {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14};
+        int i = 54;
+        int k = std::rand() % 54;
+        while(i!=0){
+            while(deckBuilder[k] == 0){
+                k = std::rand() % 54;
+            }
+            while(deckBuilder[k]!=0){
+                myDeck.push(deckBuilder[k]);
+                i--;
+                deckBuilder[k] = 0;
+            }
+            while(deckBuilder[k] == 0){
+                k = std::rand() % 54;
+            }
+            while(deckBuilder[k]!=0){
+                pcDeck.push(deckBuilder[k]);
+                i--;
+                deckBuilder[k] = 0;
+            }
         }
     }
 
